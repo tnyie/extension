@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { APIReq } from '../api'
+import * as api from '../api'
 
 export default {
   name: 'App',
@@ -31,13 +31,9 @@ export default {
         active: true,
         lastFocusedWindow: true
       }, tabs => {
-        // navigator.clipboard.writeText(tabs[0].url).then(() => {
         this.url = tabs[0].url
         console.log(this.url)
-        // if (this.url !== '' || this.url !== undefined) {
-        console.log("making request")
-        APIReq('/links', 'POST', {url: tabs[0].url}).then((resp) => {
-          console.log(resp)
+        api.CreateLink({url: tabs[0].url}).then((resp) => {
           const url = "https://tny.ie/" + resp.slug
           navigator.clipboard.writeText(url)
           this.status = url
@@ -54,7 +50,6 @@ export default {
           }
         })
         }
-        // })
       )
     }
   }
