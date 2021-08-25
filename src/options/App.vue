@@ -70,7 +70,10 @@ export default {
   methods: {
     async login() {
       console.log("uhhh")
-      await api.Login(this.form)
+      if (await api.Login(this.form) != "") {
+        this.loginMode = false
+        window.history.go()
+      }
     }
   },
   async mounted() {
