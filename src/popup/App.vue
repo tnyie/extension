@@ -60,7 +60,7 @@ export default {
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
 html {
-  width: 300px;
+  width: 100%;
   height: 400px;
   background: #2a2a2a;
   color: white;
